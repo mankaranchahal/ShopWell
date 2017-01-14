@@ -1,0 +1,42 @@
+<div class="panel panel-info">
+                        <div class="panel-heading">
+                            Review Order 
+                            <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>
+                        </div>
+                        <div class="panel-body" ng-controller="CartDetailCtrl">
+                            <table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>SL No.</th>	
+							<th>Product</th>
+							<!--<th>Quantity</th>-->
+                            <th>Quantity</th>
+							<th>Price</th>
+							
+						</tr>
+					</thead>
+					<tr class="rem1" ng-repeat="product in productList">
+						<td class="invert">{{$index+1}}</td>					
+					
+						<td class="invert">{{product.title}}</td>
+                        <td class="invert">{{quantity}}</td>
+						<td class="invert">₹{{product.price}}</td>
+						
+					</tr>
+								<!--quantity-->
+							<!--		<script>
+									$('.value-plus').on('click', function(){
+										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+										divUpd.text(newVal);
+									});
+
+									$('.value-minus').on('click', function(){
+										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+										if(newVal>=1) divUpd.text(newVal);
+									});
+									</script> -->
+								<!--quantity-->
+				</table>
+                            <div style="float:right;" class="timetable_sub">Total <i>-</i> <span>₹{{total}}</span></div>
+                        </div>
+                    </div>

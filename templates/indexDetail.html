@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'> 
+<!-- start details -->
+</head>
+<body>
+<!-- start header -->
+<div class="header_bg">
+<div class="wrap">
+	<div class="header">
+		<div class="logo">
+			<a href="/"><img src="images/logo5.png" alt=""/> </a>
+		</div>
+		 <div class="h_icon" ng-controller="CartDetailCtrl">
+<ul class="icon1 sub-icon1">
+                            <li><a href="#/CartDetail"><img src="images/cart.png" alt="" /> </a>
+                         <!--   <sup style=" line-height: 21px;
+    text-align: center;
+    border-radius: 100px;
+    top: 10px;
+    /* vertical-align: super; */
+    width: 23px;
+    position: absolute;
+    visibility: visible;
+    right: 10px;
+    font-size: 2em;
+    color: slateblue;">{{productList.length}}</sup> -->
+                                <ul class="sub-icon1 list">
+                                    <li>
+                                        <h3>
+                                        <div ng-if=" productList.length== 0 ">Shopping Cart is empty</div>
+                                          <div ng-cloak ng-if=" productList.length!=0 ">{{productList.length}} item/s added to cart</div></h3>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                        </ul> 
+
+                    </div>
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+<div class="header_btm">
+<div class="wrap">
+	<div class="header_sub">
+		<div class="h_menu">
+			<ul>
+			  <li class="active"><a href="/">Home</a></li> |
+                            <li><a href="#/product/electronics">Electronics</a></li> |
+                            <li><a href="#/product/clothing">Clothing</a></li> |
+                            <li><a href="#/product/books">Books</a></li> |
+                            <li><a href="#/contactUs">Contact us</a></li>
+			</ul>
+		</div>
+		<!--<div class="top-nav">
+	          <div class="clear"> </div>
+	          <script src="js/responsive.menu.js"></script>
+         </div>	-->
+	<div class="clear"></div>
+</div>
+</div>
+</div>
+<!-- start main -->
+<div class="main_bg">
+    <!--<h1>{{product.id}}</h1>-->
+<div class="wrap">	
+	<div class="main">
+	<!-- start content -->
+	<div class="single">
+			<!-- start span1_of_1 -->
+			<div class="left_content" >
+               <!-- <h1>{{product._id}}</h1>-->
+			<div class="span1_of_1">
+				<!-- start product_slider -->
+				<div class="product-view">
+				    <div class="product-essential">
+				        <div class="product-img-box">
+                            <div ng-repeat="product in products | filter: filterId "> 
+                            <img ng-src="{{product.img}}" src_main=""  title="" alt="" />
+                            </div>
+				   
+				</div>
+				</div>
+				</div>
+				<!-- end product_slider -->
+			</div>
+			<!-- start span1_of_1 -->
+			<div class="span1_of_1_des">
+				  <div class="desc1">
+                      <div ng-repeat="product in products | filter: filterId ">
+					    <h1>{{product.title}}</h1>
+					<p>{{product.description}}</p>
+					<h5>Rs. {{product.price}}</h5> <div class="h_icon">
+                        <ul class="icon1 sub-icon1">
+                            <li>OFFER ZONE
+                                <ul class="sub-icon1 list">                                    
+                                    <li>
+                                        <p style="font-size: 13px;">Axis bank offer : Get Rs300 flat offer on orders above rs 999.</p>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div> 
+                      </div>
+					<div class="available">
+						<div ng-repeat="product in products | filter: filterId ">Category : {{product.category}}
+                        
+                        <div ng-if="product.category==='electronics' ">
+                        <ul>
+                            
+                            <li><h5>Quantity:</h5>
+<select ng-model="quantity" required>
+                                    <option value="" >Select Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+                                    <option value="3">3</option> 
+ 
+</select>
+</li>
+                        </ul>  
+                           <div class="btn_form">
+   <button ng-click="addToCartQuantity(product,quantity)">Add To Cart</button> 
+</div>
+                        </div>
+                        <div ng-if="product.category==='books' ">
+                        <ul>
+                            <li><h5>Quantity:</h5>
+<select ng-model="quantity" required>
+                                    <option value="" >Select Quantity</option>
+<option value="1">1</option>
+<option value="2">2</option>
+                                    <option value="3">3</option> 
+ 
+</select>
+</li>
+                        </ul>  
+                            <div class="btn_form">
+   <button ng-click="addToCartQuantity(product,quantity)">Add To Cart</button> 
+</div>
+                        </div> 
+                            <div ng-if="product.category==='clothing' ">
+                        <h4>Available Options :</h4>
+<ul> 
+<li>SIZE:
+                                <select ng-model="size" required>
+                                    <option value="" >Select Size</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                </select>
+                                    </li>
+                                QUANTITY :<select ng-model="quantity" required>
+                                    <option value="" >Select Quantity</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option> 
+ 
+</select>
+</ul> 
+                                 <div class="btn_form">
+   <button ng-click="addToCart(product,quantity,size)">Add To Cart</button> 
+</div>
+                        </div> 
+                            
+                        </div>
+<!---->
+                        
+<span class="span_right">login to save in wishlist</span>
+<div class="clear"></div>
+						
+					</div>
+                      <div>
+                       
+                            <p style="font-size: 13px;">Deal is 0% Claimed and Fulfilled by Shopwell.</p>
+                            <p style="font-size: 13px;">Gift-wrap available.</p>
+                            <p style="font-size: 13px;">Actual box may vary based on availability</p>
+                            <p style="font-size: 13px;">Warranty type:Manufacturer; 1 Year International Warranty</p>
+                          </div>
+					<div class="share-desc">
+						<div class="share">
+							<h4>Share Product :</h4>
+							<ul class="share_nav">
+								<li><a href="#"><img src="images/facebook.png" title="facebook"></a></li>
+								<li><a href="#"><img src="images/twitter.png" title="Twiiter"></a></li>
+								<li><a href="#"><img src="images/rss.png" title="Rss"></a></li>
+								<li><a href="#"><img src="images/gpluse.png" title="Google+"></a></li>
+				    		</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+			   	 </div>
+			   	</div>
+			   	<div class="clear"></div>
+			   	
+		         	<!-- end tabs -->
+			   	</div>
+			   	<!-- start sidebar -->
+			 <div class="left_sidebar">
+					<div class="sellers">
+						<div class="banner-wrap bottom_banner color_link">
+								<a  class="main_link">
+								<figure><img src="images/delivery.png" alt=""></figure>
+								<h5><span>Free Shipping</span><br> on orders over Rs1000.</h5><p>This offer is valid on all our store items.</p></a>
+						 </div> 
+					</div>
+				</div>
+					<!-- end sidebar -->
+          	    <div class="clear"></div>
+	       </div>	
+	<!-- end content -->
+	</div>
+</div>
+</div>		
+<!-- start footer -->
+<div class="footer_bg">
+<div class="wrap">	
+	<div class="footer">
+		<!-- start grids_of_4 -->	
+		<div class="grids_of_4">
+			<div class="grid1_of_4">
+                                    <h4>Get to know us</h4>
+                                    <ul class="f_nav">
+                                        <li><a href="">About Us</a></li>
+                                        <li><a href="">Careers</a></li>
+                                        <li><a href="">Press Releases</a></li>
+                                        <li><a href="">Gift A Smile</a></li>                   </ul>
+                                </div>
+                                <div class="grid1_of_4">
+                                    <h4>Connect With Us</h4>
+                                    <ul class="f_nav">
+                                        <li><a href="">Facebook</a></li>
+                                        <li><a href="">Twitter</a></li>
+                                        <li><a href="">Instagram</a></li>
+                                       
+                                    </ul>
+                                </div>
+                                <div class="grid1_of_4">
+                                    <h4>Make Money With Us</h4>
+                                    <ul class="f_nav">
+                                        <li><a href="">Refer & Earn Rs.200</a></li>
+                                        <li><a href="">Sell On Shopwell</a></li>
+                                        <li><a href="">Advertise Your Products</a></li>
+                                        <li><a href="">Pay With ShopWell</a></li>                                      </ul>
+                                </div>
+                                <div class="grid1_of_4">
+                                    <h4>Let Us Help You</h4>
+                                    <ul class="f_nav">
+                                        <li><a href="">Your Account</a></li>
+                                        <li><a href="">Returns Center</a></li>
+                                        <li><a href="">100% Purchase</a></li>
+                                        <li><a href="">Help</a></li>
+                                        
+                                    </ul>
+                                </div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</div>	
+<!-- start footer -->
+<div class="footer_bg1">
+<div class="wrap">
+	<div class="footer">
+		<!-- scroll_top_btn -->
+	    <script type="text/javascript">
+			$(document).ready(function() {
+			
+				var defaults = {
+		  			containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+		 		};
+				
+				
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				
+			});
+		</script>
+	<!--	 <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>-->
+		<!--end scroll_top_btn -->
+		<div class="copy">
+			<p class="link">&copy;  All rights reserved | Template by&nbsp;&nbsp;<a href="http://w3layouts.com/"> W3Layouts</a></p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+</body>
+</html>
