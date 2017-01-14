@@ -16,7 +16,10 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect to MongoDB
-mongoose.connect('mongodb://userJMM:DmTWX1fjKTHLVhUJ@mongodb/sampledb')
+
+
+/*mongodb://userJMM:DmTWX1fjKTHLVhUJ@mongodb/sampledb*/
+mongoose.connect('mongodb://localhost/shopping_cart15')
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 

@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'> 
+     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- start details -->
 </head>
 <body>
@@ -108,7 +109,9 @@
                     </div> 
                       </div>
 					<div class="available">
-						<div ng-repeat="product in products | filter: filterId ">Category : {{product.category}}
+						<div ng-repeat="product in products | filter: filterId ">
+                            <p class="capitalize">Category : {{product.category}}</p>
+                            
                         
                         <div ng-if="product.category==='electronics' ">
                         <ul>
@@ -206,7 +209,7 @@
 						<div class="banner-wrap bottom_banner color_link">
 								<a  class="main_link">
 								<figure><img src="images/delivery.png" alt=""></figure>
-								<h5><span>Free Shipping</span><br> on orders over Rs1000.</h5><p>This offer is valid on all our store items.</p></a>
+								<h5><span>Free Shipping</span><br> on orders over Rs100.</h5><p>This offer is valid on all our store items.</p></a>
 						 </div> 
 					</div>
 				</div>
@@ -286,7 +289,7 @@
 	<!--	 <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>-->
 		<!--end scroll_top_btn -->
 		<div class="copy">
-			<p class="link">&copy;  All rights reserved | Template by&nbsp;&nbsp;<a href="http://w3layouts.com/"> W3Layouts</a></p>
+			<p class="link">&copy;  All rights reserved | ShopWell</p>
 		</div>
 		<div class="clear"></div>
 	</div>

@@ -6,6 +6,9 @@
 .sortorder.reverse:after {
   content: '\25bc';   // BLACK DOWN-POINTING TRIANGLE
 }
+    p.capitalize {
+    text-transform: capitalize;
+}
 </style>
 <div class="header_bg">
 <div class="wrap">
@@ -83,7 +86,7 @@
 <div class="main_bg1">
 <div class="wrap">	
 	<div class="main1">
-        <div col-sm-6><h2 ng-controller="ProductDetailCtrl">Featured {{category}} Products</h2> </div>
+        <div col-sm-6><h2 ng-controller="ProductDetailCtrl"><p class="capitalize">Featured {{category}} Products</p></h2> </div>
            <div class="align-right"><h5>Sort By:</h5><span style="color: white; font-weight: bold; cursor:pointer" value="lowTohigh" ng-click="sortBy('price')">PRICE</span>
             <span class="sortorder" ng-show="propertyName === 'price'" ng-class="{reverse: reverse}"></span></div>
         </div>

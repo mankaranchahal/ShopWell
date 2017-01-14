@@ -46,6 +46,9 @@ body {
 	    padding-left: 15px;
     padding-top: 11px;
 }
+p.capitalize {
+    text-transform: capitalize;
+}
 
 /*search*/
 .h_search{
@@ -53,7 +56,7 @@ body {
 	position: relative;
 	border: 1px solid rgb(216, 216, 216);
 	width: 40.3333%;
-	margin: 1% 12% 0;
+	margin: 2% 12% 0;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
@@ -216,7 +219,7 @@ body {
 /* header_btm */
 .header_btm{
 	background: #4CCFC1;
-    margin-bottom: -11px;
+    margin-bottom: -2px;
 
 }
 .header_sub{
@@ -458,6 +461,7 @@ body {
 .grid1_of_3{
 	float: left;
 	width: 29.333%;
+        max-height: 367px;
 	border: 1px solid rgb(223, 223, 223);
 	position: relative;
 }

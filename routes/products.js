@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
 
 
 router.post('/', function(req, res, next) {
+    alert("ahahahha")
     console.log("in post:");
     console.log(req.body);
     console.log("end of in post:");
