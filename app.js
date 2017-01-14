@@ -16,7 +16,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/shopping_cart')
+mongoose.connect('mongodb://localhost/shopping')
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
@@ -71,5 +71,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+app.listen(3000);
 module.exports = app;
