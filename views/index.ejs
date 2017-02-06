@@ -336,9 +336,34 @@
     
     .controller('CartDetailCtrl', ['$scope', 'Products','localStorageService', function($scope, Products,localStorageService) {
            
-         $scope.test = function() {
-             console.log("in ctrl")
-             swal("Your Order Has Been Placed!")
+         $scope.test = function(cardNumber,cvvNumber) {
+             $scope.card = parseInt(cardNumber.$modelValue);
+             $scope.cvv = parseInt(cvvNumber.$modelValue);
+             
+             $scope.regex = "^[0-9]";
+             
+           
+             var cardValue=/^[0-9]+$/.test($scope.cardNumber);
+                var cvvValue=/^[0-9]+$/.test($scope.cvvNumber);
+             
+             $scope.lengthCardNumber=$scope.cardNumber.length;
+             $scope.lengthCvv= $scope.cvvNumber.length;
+             
+           
+             debugger;
+             if(angular.isString($scope.card) || angular.isString( $scope.cvv) || Number.isNaN(Number($scope.card )) || Number.isNaN(Number($scope.cvv )) || $scope.lengthCardNumber!=16 || $scope.lengthCvv !=3 || cvvValue == false || cardValue == false){
+                 debugger;
+             }else{
+                 debugger;
+             swal({
+                 title: "Your Order Has Been Placed!",
+                 confirmButtonText: "OK",
+               function(){
+    window.location.href = 'home.html';
+}                
+             })
+                
+             }
              
   }
         
@@ -464,9 +489,9 @@
                       $scope.isDisabled = false;
                 var product = myProduct;
                 var productList = localStorageService.get('productList') || [];
-               /* 
+                
                  var quantity=localStorageService.get('quantity');
-                var Size=localStorageService.get('size');*/
+                var Size=localStorageService.get('size');
                 $scope.exists = false;
                 $rootScope.Quant = quantity;
                 console.log("kkkk",$rootScope.Quant)
@@ -501,7 +526,7 @@
             };
             
             
-            $scope.addToCart = function(myProduct,quantity,size) {
+            $scope.addToCart = function(myProduct) {
                 debugger;
                       $scope.isDisabled = false;
                 var product = myProduct;
@@ -510,12 +535,9 @@
                  var quantity=localStorageService.get('quantity');
                 var Size=localStorageService.get('size');*/
                 $scope.exists = false;
-                $rootScope.Quant = quantity;
-                console.log("kkkk",$rootScope.Quant)
-                if(quantity=="" || quantity==undefined || size=="" || size==undefined  ){
-                    alert("Size/Quantity not selected")
-                }else{
-                    
+               /* $rootScope.Quant = quantity;
+                console.log("kkkk",$rootScope.Quant)*/
+                
                      angular.forEach(productList, function(val, key) {
                     if (angular.equals(product._id, val._id)) {                        
                         $scope.exists = true;
@@ -528,12 +550,11 @@
        if($scope.exists  == false)
        {    alert("This item has been added succesfully!");          
        }
-                }
+                
                 if ($scope.exists == false && product.id != "") {                  
                     productList.push(product);                    
                     localStorageService.set('productList', productList);
-                     localStorageService.set('quantity', quantity);
-                    localStorageService.set('Size', Size);
+                
                      }  
                  /*   console.log("value");
                     console.log($scope.isDisabled );*/
