@@ -376,13 +376,13 @@ hr{
             </div>    
             <div class="row cart-body">
                 
-                <form class="form-horizontal" method="post" action="" name='form'>
+                <form class="form-horizontal" method="post" action="" name='cardDetails'>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     
                     <!--REVIEW ORDER-->
                      <div class="panel panel-info">
                         <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span> Secure Payment</div>
-                        <form name="cardDetails">
+                        <form name="">
                         <div class="panel-body">
                             <div class="padd">
                             <div class="form-group">
@@ -402,7 +402,7 @@ hr{
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Credit/Debit Card Number:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" maxlength="16" minlength="16" name="cardNumber" value="" ng-model="cardNumber" required/>
+                                    <input type="text" pattern="[0-9]{16,16}" maxlength="16" minlength="16" name="cardNumber" value="" ng-model="cardNumber" required/>
                                 </div>
                                 <div role="alert">                                    
                                <span class="error" ng-messages="cardDetails.cardNumber.$error">
@@ -414,7 +414,7 @@ hr{
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Card CVV:</strong></div>
-                                <div class="col-md-12"><input type="text" maxlength="3" minlength="3" name="cvvNumber" value="" ng-model="cvvNumber" required/></div>
+                                <div class="col-md-12"><input type="text" pattern="[0-9]{3,3}"  maxlength="3" minlength="3" name="cvvNumber" value="" ng-model="cvvNumber"   required/></div>
                                 <div role="alert">                                    
                                <span class="error" ng-messages="cardDetails.cvvNumber.$error">
                                       <span ng-message="required" ng-show="cardDetails.cvvNumber.$dirty && cardDetails.cvvNumber.required">
@@ -475,10 +475,10 @@ hr{
                             </div>
                               
     <div class="coolpad">                   
-<button type="submit" ng-disabled="!form.$dirty" ng-click="test()" class="btn btn-info btn-lg" >Place Order</button>
+<button type="submit" ng-disabled="!cardDetails.cardNumber.$dirty || !cardDetails.cvvNumber.$dirty || !cardDetails.month.$dirty || !cardDetails.year.$dirty" ng-click="test(cardDetails.cardNumber,cardDetails.cvvNumber)" class="btn btn-info btn-lg" >Place Order</button>
         
        <!-- <button type="button"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
- <div class="modal fade" id="myModal" role="dialog">
+<!-- <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
        Modal content
@@ -496,7 +496,7 @@ hr{
       </div>
       
     </div>
-  </div>
+  </div>-->
         </div> 
 
                             
@@ -513,15 +513,13 @@ hr{
                     <div class="panel panel-info">
                        
                         <div class="panel-heading">Address</div>
-                        <form name="userDetails">
-                            
+                        <form name="userDetails">                            
                         <div class="panel-body">
-                             <div class="padd">
-                           
-                            <div class="form-group">
+                             <div class="padd">                           
+                                <div class="form-group">
                                 <div class="col-md-12"><strong>Country:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" ng-model="country" name="country" value="" required/>
+                                    <input type="text" class="form-control" ng-model="country" pattern="[a-zA-Z\s]{3,30}" minlength="3"  maxlength="30" name="country" value="" required/>
                                 </div>
                                 <div role="alert">                                    
                                <span class="error" ng-messages="userDetails.country.$error">
@@ -533,7 +531,7 @@ hr{
                             
                             <div class="form-group">
                                 <div class="col-md-12"><strong>First Name:</strong></div>
-                                    <div class="col-md-12"><input type="text" ng-model="firstName" name="firstName" class="form-control" value="" required/>
+                                    <div class="col-md-12"><input type="text" ng-model="firstName" pattern="[a-zA-Z\s]{3,15}" minlength="3"  maxlength="15" name="firstName" class="form-control" value="" required/>
                                         <div role="alert"> </div>                                   
                                <span class="error" ng-messages="userDetails.firstName.$error">
                                       <span ng-message="required" ng-show="userDetails.firstName.$dirty && userDetails.firstName.required">
@@ -546,7 +544,7 @@ hr{
                                 
                               <div class="form-group">
                                 <div class="col-md-12"><strong>Last Name:</strong></div>
-                                    <div class="col-md-12"><input type="text" ng-model="lastName" name="lastName" class="form-control" value="" required/>
+                                    <div class="col-md-12"><input type="text" ng-model="lastName" pattern="[a-zA-Z\s]{3,15}" minlength="3"  maxlength="15" name="lastName" class="form-control" value="" required/>
                                         <div role="alert"> </div>                                   
                                <span class="error" ng-messages="userDetails.lastName.$error">
                                       <span ng-message="required" ng-show="userDetails.lastName.$dirty && userDetails.lastName.required">
@@ -570,7 +568,7 @@ hr{
                             <div class="form-group">
                                 <div class="col-md-12"><strong>City:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" ng-model="city" name="city" class="form-control" value="" required/>
+                                    <input type="text" ng-model="city" name="city" pattern="[a-zA-Z\s]{3,30}" minlength="3"  maxlength="30" class="form-control" value="" required/>
                                 </div>
                                 <span class="error" ng-messages="userDetails.city.$error">
                                       <span ng-message="required" ng-show="userDetails.city.$dirty && userDetails.city.required">
@@ -581,7 +579,7 @@ hr{
                             <div class="form-group">
                                 <div class="col-md-12"><strong>State:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" ng-model="state" name="state" class="form-control" value="" required/>
+                                    <input type="text" ng-model="state" pattern="[a-zA-Z\s]{3,30}" minlength="3"  maxlength="30" name="state" class="form-control" value="" required/>
                                 </div>
                                 <span class="error" ng-messages="userDetails.state.$error">
                                       <span ng-message="required" ng-show="userDetails.state.$dirty && userDetails.state.required">
@@ -592,22 +590,31 @@ hr{
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" ng-model="zipCode" name="zipCode" class="form-control" value="" required/>
+                                    <input type="text" ng-model="zipCode" pattern="[0-9]{6,6}" maxlength="6" minlength="6" name="zipCode" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Phone Number:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" ng-model="phoneNumber" name="phoneNumber" class="form-control" value="" required/></div>
-                                <span class="error" ng-messages="userDetails.phoneNumber.$error">
+                                    <input type="text" ng-model="phoneNumber" pattern="[0-9]{10,10}" maxlength="10" minlength="10" ng-model="phoneNumber" name="phoneNumber" class="form-control" value="" required/>
+                                </div>
+                                <div role="alert">                                    
+                               <span class="error" ng-messages="userDetails.phoneNumber.$error.$error">
                                       <span ng-message="required" ng-show="userDetails.phoneNumber.$dirty && userDetails.phoneNumber.required">
                                        Required!</span>
-                                 </span> 
+                                 </span>                                     
                             </div>
+                               
+                            </div>
+                                 
+                               
+                                 
+                                 
+                                 
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Email Address:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" ng-model="emailAddress" name="emailAddress" class="form-control" value="" required/></div>
+                                    <input type="email" ng-model="emailAddress" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" name="emailAddress" maxlength="25" class="form-control" value="" required/></div>
                                 <span class="error" ng-messages="userDetails.emailAddress.$error">
                                       <span ng-message="required" ng-show="userDetails.emailAddress.$dirty && userDetails.emailAddress.required">
                                        Required!</span>
@@ -619,7 +626,7 @@ hr{
                             
                             </div>
                             <div class="downpad">
-                         <button type="submit" class="btn btn-info btn-lg"  style="float:right;">>></button>
+                         <button type="submit" class="btn btn-info btn-lg"  style="float:right;" ng-disabled=" !userDetails.country.$dirty || !userDetails.firstName.$dirty || !userDetails.lastName.$dirty|| !userDetails.address.$dirty || !userDetails.city.$dirty || !userDetails.state.$dirty || !userDetails.phoneNumber.$dirty  || !userDetails.emailAddress.$dirty" > >> </button>
                                      </div>
                         </form>
                         
