@@ -113,7 +113,7 @@
                             <p class="capitalize">Category : {{product.category}}</p>
                             
                         
-                        <div ng-if="product.category==='electronics' ">
+                    <!--    <div ng-if="product.category==='electronics' ">
                         <ul>
                             
                             <li><h5>Quantity:</h5>
@@ -129,8 +129,8 @@
                            <div class="btn_form">
    <button ng-click="addToCartQuantity(product,quantity)">Add To Cart</button> 
 </div>
-                        </div>
-                        <div ng-if="product.category==='books' ">
+                        </div>-->
+                        <!--<div ng-if="product.category==='books' ">
                         <ul>
                             <li><h5>Quantity:</h5>
 <select ng-model="quantity" required>
@@ -143,10 +143,10 @@
 </li>
                         </ul>  
                             <div class="btn_form">
-   <button ng-click="addToCartQuantity(product,quantity)">Add To Cart</button> 
+   <button ng-click="addToCart(product)">Add To Cart</button> 
 </div>
-                        </div> 
-                            <div ng-if="product.category==='clothing' ">
+                        </div> -->
+                         <!--   <div ng-if="product.category==='clothing' ">
                         <h4>Available Options :</h4>
 <ul> 
 <li>SIZE:
@@ -169,8 +169,10 @@
                                  <div class="btn_form">
    <button ng-click="addToCart(product,quantity,size)">Add To Cart</button> 
 </div>
-                        </div> 
-                            
+                        </div> -->
+                                                      <div class="btn_form">
+   <button ng-click="addToCart(product)">Add To Cart</button> 
+</div>
                         </div>
 <!---->
                         
